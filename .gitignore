@@ -1,0 +1,9 @@
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup
+.terraform.tfstate.lock.info
+.terraform/
+deployment/secrets/
+terraform.tfvars
+.env
+venv/
