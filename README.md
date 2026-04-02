@@ -9,7 +9,8 @@ This directory contains the FastAPI-driven backend for the Proof of Resolution a
 - **RESTful API:** Developed with FastAPI for high performance and automatic documentation.
 - **Secure Authentication:** JWT-based user authentication and route protection.
 - **Validation:** Pydantic models for request/response validation.
-
+## API Responses
+I added some fun API response message formats. Not convention but fun.
 ## Directory Structure
 
 - `BlockChain/`: Core blockchain business logic and mining implementation.
