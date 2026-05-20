@@ -36,7 +36,7 @@ class ResolutionService:
         )
 
         return CreateResolutionResponse(
-            message="🎉 Resolution locked on the blockchain! You've made a commitment to the universe.",
+            message="Resolution locked on the blockchain.",
             goal_id=db_resolution.goal_id,
             resolution=ResolutionInfo(
                 title=db_resolution.title,

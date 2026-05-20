@@ -5,7 +5,7 @@ import sys
 
 uri = "http://127.0.0.1:8080" #"https://blacktechdivisionreward-hrjw5cc7pa-uc.a.run.app"
 
-class CaesarAIUnittest(unittest.TestCase):
+class EndpointUnittest(unittest.TestCase):
     def test_message(self):
         response = requests.get(f"{uri}/sendmessage",params={"message":"hello world"})
         self.assertEqual(response.json().get("error"),None)

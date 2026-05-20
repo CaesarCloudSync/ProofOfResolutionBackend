@@ -4,8 +4,8 @@ from __future__ import annotations
 
 import uuid
 
-from CaesarSQLDB.CaesarCRUD import CaesarCRUD
-from CaesarSQLDB.CaesarCreateTables import CaesarCreateTables
+from Database.CRUD import CRUD
+from Database.CreateTables import CreateTables
 from constants import GOAL_TABLE
 from models.resolutions.dto.Resolution import Resolution
 
@@ -13,7 +13,7 @@ from models.resolutions.dto.Resolution import Resolution
 class ResolutionRepository:
     """Handles all database operations for resolutions."""
 
-    def __init__(self, crud: CaesarCRUD, create_tables: CaesarCreateTables) -> None:
+    def __init__(self, crud: CRUD, create_tables: CreateTables) -> None:
         self._crud = crud
         self._fields = create_tables.GOAL_FIELDS   # 6 fields, no created_at
 

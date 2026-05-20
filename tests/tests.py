@@ -1,4 +1,4 @@
-"""Unit tests for the CaesarAI Blockchain API."""
+"""Unit tests for the Proof of Resolution Blockchain API."""
 
 from __future__ import annotations
 
@@ -35,6 +35,14 @@ class BlockchainEndpointTests(unittest.TestCase):
         data = response.json()
         self.assertIn("is_valid", data)
         self.assertIn("message", data)
+
+    def test_validate_specific_block(self) -> None:
+        response = requests.get(f"{BASE_URL}/blockchain/valid/1", timeout=10)
+        self.assertEqual(response.status_code, 200)
+        data = response.json()
+        self.assertIn("is_valid", data)
+        self.assertIn("message", data)
+        self.assertTrue(data["is_valid"])
 
 
 class ResolutionEndpointTests(unittest.TestCase):
@@ -96,7 +104,7 @@ class ResolutionEndpointTests(unittest.TestCase):
         data = response.json()
         self.assertIn("message", data)
         self.assertIn("goal_id", data)
-        # Router returns: "🔒 Nice try! The blockchain never forgets – and neither do we."
+        # Router returns: "Nice try! The blockchain never forgets – and neither do we."
         self.assertIn("blockchain never forgets", data["message"])
 
     def test_5_attempt_update_resolution_returns_immutable_response(self) -> None:
@@ -108,7 +116,7 @@ class ResolutionEndpointTests(unittest.TestCase):
         data = response.json()
         self.assertIn("message", data)
         self.assertIn("goal_id", data)
-        # Router returns: "✋ Nice try! You thought you could change your resolution... but the blockchain gods said NO."
+        # Router returns: "Nice try! You thought you could change your resolution... but the blockchain gods said NO."
         self.assertIn("blockchain gods said NO", data["message"])
 
 

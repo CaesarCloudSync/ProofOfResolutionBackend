@@ -6,7 +6,7 @@ import hashlib
 import uuid
 
 
-class CaesarHash:
+class HashUtils:
     """Static hashing helpers used throughout the application."""
 
     @staticmethod
@@ -35,4 +35,4 @@ class CaesarHash:
             data["quotatitle"].lower().replace(" ", "")
             + data["quotatype"].lower().replace(" ", "")
         )
-        return CaesarHash.hash_text(raw)
+        return HashUtils.hash_text(raw)

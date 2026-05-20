@@ -64,3 +64,20 @@ def is_valid(blockchain: BlockChain = Depends(get_blockchain)) -> ValidityRespon
         message="The Blockchain is valid." if valid else "The Blockchain is not valid.",
         is_valid=valid,
     )
+
+
+@router.get(
+    "/valid/{block_index}",
+    response_model=ValidityResponse,
+    summary="Validate a specific block",
+)
+def is_block_valid(
+    block_index: int,
+    blockchain: BlockChain = Depends(get_blockchain),
+) -> ValidityResponse:
+    """Check whether a specific block is internally consistent."""
+    valid = blockchain.validate_specific_block(block_index)
+    return ValidityResponse(
+        message=f"Block #{block_index} is valid." if valid else f"Block #{block_index} is invalid.",
+        is_valid=valid,
+    )

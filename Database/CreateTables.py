@@ -13,10 +13,10 @@ from constants import (
     VARCHAR_255_NOT_NULL,
     TEXT_NOT_NULL,
 )
-from CaesarSQLDB.CaesarCRUD import CaesarCRUD
+from Database.CRUD import CRUD
 
 
-class CaesarCreateTables:
+class CreateTables:
     """Holds table metadata and creates all required tables."""
 
     # ------------------------------------------------------------------ blockchain
@@ -55,7 +55,7 @@ class CaesarCreateTables:
         VARCHAR_255_NOT_NULL,   # block_hash
     )
 
-    def create(self, crud: CaesarCRUD) -> None:
+    def create(self, crud: CRUD) -> None:
         """Initialise all required tables in the database."""
         crud.create_table(
             primary_key=BLOCKCHAIN_PRIMARY_KEY,

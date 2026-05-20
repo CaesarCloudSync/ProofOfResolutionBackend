@@ -17,7 +17,7 @@ from routers import auth_router, blockchain_router,resolution_router
 def create_app() -> FastAPI:
     """Build and configure the FastAPI application."""
     app = FastAPI(
-        title="CaesarAI Blockchain API",
+        title="Proof of Resolution Blockchain API",
         description="A blockchain backed by PostgreSQL, exposed via FastAPI.",
         version="1.0.0",
     )

@@ -72,7 +72,7 @@ class ResolutionE2ETests(unittest.TestCase):
         data = response.json()
         self.assertIn("message", data)
         self.assertIn("goal_id", data)
-        # Router returns: "🔒 Nice try! The blockchain never forgets – and neither do we."
+        # Router returns: "Nice try! The blockchain never forgets – and neither do we."
         self.assertIn("blockchain never forgets", data["message"])
         print(f"Received immutable delete response: {data['message']}")
 
@@ -86,7 +86,7 @@ class ResolutionE2ETests(unittest.TestCase):
         data = response.json()
         self.assertIn("message", data)
         self.assertIn("goal_id", data)
-        # Router returns: "✋ Nice try! You thought you could change your resolution... but the blockchain gods said NO."
+        # Router returns: "Nice try! You thought you could change your resolution... but the blockchain gods said NO."
         self.assertIn("blockchain gods said NO", data["message"])
         print(f"Received immutable update response: {data['message']}")
 

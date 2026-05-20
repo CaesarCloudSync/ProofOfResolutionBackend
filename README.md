@@ -14,8 +14,8 @@ I added some fun API response message formats. Not convention but fun.
 ## Directory Structure
 
 - `BlockChain/`: Core blockchain business logic and mining implementation.
-- `CaesarSQLDB/`: Database interaction layer (CRUD operations and table creation).
-- `CaesarJWT/`: JWT generation and validation logic.
+- `Database/`: Database interaction layer (CRUD operations and table creation).
+- `Security/`: JWT generation and validation logic.
 - `routers/`: API route definitions (auth, blockchain, resolutions).
 - `models/`: Pydantic DTOs and request/response schemas.
 - `services/`: Business logic layer.

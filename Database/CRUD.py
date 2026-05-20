@@ -1,18 +1,18 @@
-"""CRUD operations built on top of CaesarSQL."""
+"""CRUD operations built on top of SQLConnection."""
 
 from __future__ import annotations
 
 import base64
 from typing import Any, Generator, Optional
 
-from CaesarSQLDB.CaesarSQL import CaesarSQL
+from Database.SQLConnection import SQLConnection
 
 
-class CaesarCRUD:
+class CRUD:
     """High-level CRUD interface."""
 
     def __init__(self) -> None:
-        self._sql = CaesarSQL()
+        self._sql = SQLConnection()
 
     # ------------------------------------------------------------------
     # Schema helpers

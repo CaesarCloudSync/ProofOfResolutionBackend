@@ -7,15 +7,15 @@ import hashlib
 import json
 
 from constants import BLOCKCHAIN_TABLE, PROOF_OF_WORK_PREFIX
-from CaesarSQLDB.CaesarCRUD import CaesarCRUD
-from CaesarSQLDB.CaesarCreateTables import CaesarCreateTables
+from Database.CRUD import CRUD
+from Database.CreateTables import CreateTables
 from models.blockchain.BlockDTO import BlockDTO
 
 
 class BlockChain:
     """Append-only blockchain persisted to PostgreSQL."""
 
-    def __init__(self, crud: CaesarCRUD, create_tables: CaesarCreateTables) -> None:
+    def __init__(self, crud: CRUD, create_tables: CreateTables) -> None:
         self._crud = crud
         self._fields = create_tables.CHAIN_FIELDS
         self._create_genesis_block()
@@ -116,6 +116,28 @@ class BlockChain:
             hash_result = hashlib.sha256(str(candidate).encode()).hexdigest()
             if hash_result[: len(PROOF_OF_WORK_PREFIX)] != PROOF_OF_WORK_PREFIX:
                 return False
+
+        return True
+
+    def validate_specific_block(self, block_index: int) -> bool:
+        """Validate a specific block by its index against its predecessor."""
+        chain = self.get_full_chain()
+        current = next((b for b in chain if b.index == block_index), None)
+        if not current:
+            return False
+        if block_index <= 1:
+            return True
+        previous = next((b for b in chain if b.index == block_index - 1), None)
+        if not previous:
+            return False
+
+        if current.previous_hash != self.hash(previous):
+            return False
+
+        candidate = current.proof ** 2 - previous.proof ** 2
+        hash_result = hashlib.sha256(str(candidate).encode()).hexdigest()
+        if hash_result[: len(PROOF_OF_WORK_PREFIX)] != PROOF_OF_WORK_PREFIX:
+            return False
 
         return True
 

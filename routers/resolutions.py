@@ -56,8 +56,8 @@ def get_resolution(
 def update_resolution(goal_id: str) -> ImmutableResponse:
     """Nicely tell the user that the blockchain gods forbid mutations."""
     return ImmutableResponse(
-        message="✋ Nice try! You thought you could change your resolution... but the blockchain gods said NO.",
-        tip="Resolutions are forever. Consider adding a new one instead of running from the old one 😄",
+        message="Nice try! You thought you could change your resolution... but the blockchain gods said NO.",
+        tip="Resolutions are forever. Consider adding a new one instead of running from the old one.",
         goal_id=goal_id,
     )
 
@@ -66,7 +66,7 @@ def update_resolution(goal_id: str) -> ImmutableResponse:
 def delete_resolution(goal_id: str) -> ImmutableResponse:
     """Nicely tell the user that the blockchain gods forbid deletions."""
     return ImmutableResponse(
-        message="🔒 Nice try! The blockchain never forgets – and neither do we.",
-        tip="You can't outrun your resolutions. The chain remembers all 💪",
+        message="Nice try! The blockchain never forgets – and neither do we.",
+        tip="You can't outrun your resolutions. The chain remembers all.",
         goal_id=goal_id,
     )

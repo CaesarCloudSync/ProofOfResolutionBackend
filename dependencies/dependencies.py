@@ -7,21 +7,21 @@ from functools import lru_cache
 from fastapi import Depends
 
 from BlockChain.BlockChain import BlockChain
-from CaesarJWT.CaesarJWT import CaesarJWT
-from CaesarSQLDB.CaesarCRUD import CaesarCRUD
-from CaesarSQLDB.CaesarCreateTables import CaesarCreateTables
+from Security.JWTService import JWTService
+from Database.CRUD import CRUD
+from Database.CreateTables import CreateTables
 from repositories.ResolutionRepository import ResolutionRepository
 from services.ResolutionService import ResolutionService
 
 
 @lru_cache(maxsize=1)
-def get_crud() -> CaesarCRUD:
-    return CaesarCRUD()
+def get_crud() -> CRUD:
+    return CRUD()
 
 
 @lru_cache(maxsize=1)
-def get_create_tables() -> CaesarCreateTables:
-    return CaesarCreateTables()
+def get_create_tables() -> CreateTables:
+    return CreateTables()
 
 
 @lru_cache(maxsize=1)
@@ -33,14 +33,14 @@ def get_blockchain() -> BlockChain:
 
 
 @lru_cache(maxsize=1)
-def get_jwt_service() -> CaesarJWT:
-    return CaesarJWT(get_crud())
+def get_jwt_service() -> JWTService:
+    return JWTService(get_crud())
 
 
 def get_resolution_service(
     blockchain: BlockChain = Depends(get_blockchain),
-    crud: CaesarCRUD = Depends(get_crud),
-    create_tables: CaesarCreateTables = Depends(get_create_tables),
+    crud: CRUD = Depends(get_crud),
+    create_tables: CreateTables = Depends(get_create_tables),
 ) -> ResolutionService:
     repository = ResolutionRepository(crud, create_tables)
     return ResolutionService(blockchain, repository)

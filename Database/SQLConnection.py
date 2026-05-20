@@ -11,11 +11,11 @@ from typing import Any, Callable, Generator, Optional
 _DB_PATH = "/tmp/app.db"
 
 
-class CaesarSQL:
+class SQLConnection:
     """Manages a single sqlite3 connection and exposes helpers for executing SQL."""
 
     def __init__(self) -> None:
-        print(f"[CaesarSQL] Connecting to SQLite at: {_DB_PATH}")
+        print(f"[SQLConnection] Connecting to SQLite at: {_DB_PATH}")
         # Ensure the directory exists and is writable
 
         self.connection: sqlite3.Connection = sqlite3.connect(

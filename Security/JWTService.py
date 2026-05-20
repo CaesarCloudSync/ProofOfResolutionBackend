@@ -12,16 +12,16 @@ from constants import (
     STUDENT_SUBSCRIPTIONS_TABLE,
     USERS_TABLE,
 )
-from CaesarSQLDB.CaesarCRUD import CaesarCRUD
+from Database.CRUD import CRUD
 from models.auth.LoginRequest import LoginRequest
 from models.auth.TokenPayload import TokenPayload
 from models.auth.TokenResponse import TokenResponse
 
 
-class CaesarJWT:
+class JWTService:
     """Handles JWT encoding / decoding and login verification."""
 
-    def __init__(self, crud: CaesarCRUD) -> None:
+    def __init__(self, crud: CRUD) -> None:
         self._crud = crud
 
     # ------------------------------------------------------------------
