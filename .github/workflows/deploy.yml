@@ -36,7 +36,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build \
+          docker build --progress=plain \
             -t gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:${{ github.sha }} \
             -t gcr.io/${{ env.PROJECT_ID }}/${{ env.IMAGE_NAME }}:latest \
             .
