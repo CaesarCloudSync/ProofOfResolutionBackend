@@ -6,8 +6,8 @@ on:
       - main
 
 env:
-  PROJECT_ID: caesaraiapis
-  SERVICE_NAME: caesaraifastapi
+  PROJECT_ID: blustoryapp
+  SERVICE_NAME: proofofresolution
   REGION: us-central1
   IMAGE_NAME: proofofresolution-backend
 
