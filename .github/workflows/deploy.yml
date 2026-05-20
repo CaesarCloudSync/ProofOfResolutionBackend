@@ -7,7 +7,7 @@ on:
 
 env:
   PROJECT_ID: caesaraiapis
-  SERVICE_NAME: proofofresolution
+  SERVICE_NAME: roofofresolution-backend
   REGION: us-central1
   IMAGE_NAME: proofofresolution-backend
 
