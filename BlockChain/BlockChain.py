@@ -119,15 +119,26 @@ class BlockChain:
 
         return True
 
+    def get_block_by_index(self, block_index: int) -> Optional[BlockDTO]:
+        """Fetch a single block by its index efficiently from the database."""
+        rows = self._crud.get_data(
+            fields=self._fields,
+            table=BLOCKCHAIN_TABLE,
+            condition=f'"index" = {block_index}',
+            get_amount=1,
+        )
+        if not rows:
+            return None
+        return BlockDTO(**rows[0])
+
     def validate_specific_block(self, block_index: int) -> bool:
         """Validate a specific block by its index against its predecessor."""
-        chain = self.get_full_chain()
-        current = next((b for b in chain if b.index == block_index), None)
+        current = self.get_block_by_index(block_index)
         if not current:
             return False
         if block_index <= 1:
             return True
-        previous = next((b for b in chain if b.index == block_index - 1), None)
+        previous = self.get_block_by_index(block_index - 1)
         if not previous:
             return False
 
