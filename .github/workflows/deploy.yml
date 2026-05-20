@@ -53,3 +53,7 @@ jobs:
           region: ${{ env.REGION }}
           image: us-central1-docker.pkg.dev/${{ env.PROJECT_ID }}/caesaraiapis/${{ env.IMAGE_NAME }}:${{ github.sha }}
           flags: '--allow-unauthenticated'
+          env_vars: |
+            DATABASE_URL=${{ secrets.DATABASE_URL }}
+            CORS_ORIGINS=${{ secrets.CORS_ORIGINS }}
+            JWT_SECRET=${{ secrets.JWT_SECRET }}
