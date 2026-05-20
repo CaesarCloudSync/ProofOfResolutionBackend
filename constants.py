@@ -36,7 +36,10 @@ VARCHAR_255_NOT_NULL: str = "TEXT NOT NULL"
 TEXT_NOT_NULL: str = "TEXT NOT NULL"
 
 # CORS
-CORS_ORIGINS: list[str] = ["*"]
+_cors_origins_env = os.getenv("CORS_ORIGINS", "*")
+CORS_ORIGINS: list[str] = [
+    origin.strip() for origin in _cors_origins_env.split(",") if origin.strip()
+]
 CORS_METHODS: list[str] = ["*"]
 CORS_HEADERS: list[str] = ["*"]
 
